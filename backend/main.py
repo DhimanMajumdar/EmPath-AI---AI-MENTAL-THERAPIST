@@ -3,6 +3,8 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 import uvicorn
 
+from ai_agent import agent,SYSTEM_PROMPT,parse_stream
+
 app=FastAPI()
 
 # Step2: Receive and validate request from frontend
@@ -13,11 +15,14 @@ class Query(BaseModel):
 async def ask(query:Query):
 
     # AI Agent
-    #response=ai_agent(query)
-    response="This is from backend"
+    inputs = {"messages": [("system", SYSTEM_PROMPT), ("user", query.message)]}
+    #inputs = {"messages": [("user", query.message)]}
+    stream = agent.stream(inputs, stream_mode="updates")
+    tool_called_name, final_response = parse_stream(stream)
 
-    # Step 3: Send response to the frontend
-    return response
+    # Step3: Send response to the frontend
+    return {"response": final_response,
+            "tool_called": tool_called_name}
 
 if __name__=="__main__":
     uvicorn.run("main:app",host="0.0.0.0",port=8000,reload=True)

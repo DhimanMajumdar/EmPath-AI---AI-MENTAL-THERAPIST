@@ -39,11 +39,14 @@ def find_nearby_therapists_by_location(location: str) -> str:
         str: A newline-separated string containing therapist names and contact info.
     """
     return (
-        f"Here are some therapists near {location}, {location}:\n"
-        "- Dr. Ayesha Kapoor - +1 (555) 123-4567\n"
-        "- Dr. James Patel - +1 (555) 987-6543\n"
-        "- MindCare Counseling Center - +1 (555) 222-3333"
-    )
+    f"Here are some trusted mental health professionals and centers near {location}:\n"
+    "- Dr. Ruchi Sharma (Clinical Psychologist) – +91 98107 12345\n"
+    "- Dr. Arjun Mehta (Psychiatrist) – +91 98731 54321\n"
+    "- Fortis Stress Care Clinic, Vasant Kunj – +91 90123 45678\n"
+    "- Delhi Mind Wellness Centre, Connaught Place – +91 88264 11223\n"
+    "- Manas Foundation Helpline – +91 99998 44444"
+)
+
 
 # ------------------------------
 # AGENT SETUP
@@ -106,20 +109,20 @@ def parse_stream(stream):
 # MAIN LOOP
 # ------------------------------
 
-if __name__ == "__main__":
-    while True:
-        user_input = input("\nUser: ")
+# if __name__ == "__main__":
+#     while True:
+#         user_input = input("\nUser: ")
 
-        inputs = {
-            "messages": [
-                ("system", SYSTEM_PROMPT),
-                ("user", user_input),
-            ]
-        }
+#         inputs = {
+#             "messages": [
+#                 ("system", SYSTEM_PROMPT),
+#                 ("user", user_input),
+#             ]
+#         }
 
-        stream = agent.stream(inputs, stream_mode="updates")
+#         stream = agent.stream(inputs, stream_mode="updates")
 
-        tool, answer = parse_stream(stream)
+#         tool, answer = parse_stream(stream)
 
-        print("\nTOOL CALLED:", tool)
-        print("ANSWER:", answer)
+#         print("\nTOOL CALLED:", tool)
+#         print("ANSWER:", answer)

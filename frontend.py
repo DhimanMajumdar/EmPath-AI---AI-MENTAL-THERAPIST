@@ -6,7 +6,7 @@ import requests
 BACKEND_URL="http://localhost:8000/ask"
 
 st.set_page_config(page_title="EmPath AI- AI Mental Health Therapist", layout="wide")
-st.title("🧠 EmPath – AI Mental Health Therapist")
+st.title("🧠 EmPath AI – AI Mental Health Therapist")
 
 # Initialize chat history in session state
 if "chat_history" not in st.session_state:
@@ -23,8 +23,8 @@ if user_input:
     
     
     # AI Agent exists here
-    fixed_dummy_response_from_backend=requests.post(BACKEND_URL,json={"message":user_input})
-    st.session_state.chat_history.append({"role":"assistant","content":fixed_dummy_response_from_backend.json()})
+    response_from_backend=requests.post(BACKEND_URL,json={"message":user_input})
+    st.session_state.chat_history.append({"role": "assistant", "content": f'{response_from_backend.json()["response"]} WITH TOOL: [{response_from_backend.json()["tool_called"]}]'})
 
 
 # Step3: Show response from backend
