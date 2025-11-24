@@ -12,6 +12,16 @@ but a supportive companion for moments when people feel alone and need someone t
  1) Link One: https://drive.google.com/file/d/13SI6v33GP6JE3SMJEBrN83iCPChUiOmn/view?usp=drive_link
  2) Link Two: https://drive.google.com/file/d/1nFgPfCYbVxMlQpevh0gwwSxNCxI6RJgm/view?usp=drive_link
 
+
+📸 DEMO
+
+<p align="center">
+  <img src="images/one.png" width="600">
+  <img src="images/two.png" width="600">
+  <img src="images/three.png" width="600">
+</p>
+
+
 🧭 Overview
 
 EmPath AI combines:
